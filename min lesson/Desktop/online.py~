@@ -1,0 +1,19 @@
+from operator import itemgetter
+
+def answer(meetings):
+    meetings = sorted(meetings, key=itemgetter(1))
+    solutions = [[meetings[0]]]
+    max_meetings = 1
+    for i in xrange(1, len(meetings)):
+    	for solution in solutions:
+    		if meetings[i][0] >= solution[-1][1]:
+    			solution.append(meetings[i])
+    			if len(solution) > max_meetings:
+    				max_meetings = len(solution)
+    	solutions.append([meetings[i]])
+    return max_meetings
+
+meetings = [[0, 1],[4, 5] ,[1, 2], [2, 3], [3, 5]]
+#meetings = [[0, 1000000], [42, 43], [0, 1000000], [42, 43]]
+
+print answer(meetings)
