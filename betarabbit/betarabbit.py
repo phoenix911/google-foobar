@@ -1,0 +1,1 @@
+def answer(x) :    sum = 0    while x:        x, remainder = divmod (x,10)        sum = sum+remainder        while sum >=10:            sum = answer(sum)            return sum
